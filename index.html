@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 30px;
+            width: 400px;
+        }
+
+        h1 {
+            color: #292b2c;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="button"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="button"] {
+            background-color: #7a51e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        input[type="button"]:hover {
+            background-color: #6e42c1;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            color: #292b2c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notas</h1>
+        <form name="formMedia" class="pure-form pure-form-stacked">
+            <fieldset>
+                <label for="inom">Nome:</label>
+                <input type="text" name="nom" id="inom" placeholder="Digite seu nome">
+
+                <label for="inot1">Nota 1:</label>
+                <input type="number" name="nota1" id="inot1" step="0.1" placeholder="Digite sua nota">
+
+                <label for="Inot2">Nota 2:</label>
+                <input type="number" name="nota2" id="inot2" step="0.1" placeholder="Digite sua nota">
+
+                <label for="Inot3">Nota 3:</label>
+                <input type="number" name="nota3" id="inot3" step="0.1" placeholder="Digite sua nota">
+
+                <label for="Inot4">Nota 4:</label>
+                <input type="number" name="nota4" id="inot4" step="0.1" placeholder="Digite sua nota">
+
+                <input type="button" value="Calcular" onclick="calc()" class="pure-button pure-button-primary">
+            </fieldset>
+        </form>
+        <h2 id="resultado"></h2>
+    </div>
+    <script>
+        function calc() {
+            var name, n1, n2, n3, n4, media;
+            n1 = formMedia.nota1.value;
+            n2 = formMedia.nota2.value;
+            n3 = formMedia.nota3.value;
+            n4 = formMedia.nota4.value;
+            name = formMedia.nom.value; 
+
+            n1 = parseFloat(n1);
+            n2 = parseFloat(n2);
+            n3 = parseFloat(n3);    
+            n4 = parseFloat(n4);
+
+            media = ((n1)+(2*n2)+(3*n3)+(4*n4))/10;
+            console.log(media);
+
+            var result = document.getElementById("resultado");
+            console.log(result);
+           
+            if(media >= 6){
+                var status = ". Parabéns " + name + " você conseguiu, foi aprovado!!!!!!";
+            }
+            else if(media>3 && media<6){
+                var status = ". Parabéns " + name + " você pode tentar outra vez!!!!!!";
+                }
+            else{
+                    var status = ". Parabéns " + name + " ano que vem nos vemos de novo!!!!!!";
+                }  
+            
+            result.textContent = "A sua media de é: " + media + status;
+        }
+    </script>
+</body>
+</html>
